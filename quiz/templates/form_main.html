@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}{{ form.title }}{% endblock title %}
+{% block content %}
+<h1>{{ form.title }}</h1>
+<h3>Form Questions:</h3>
+<div>
+  <ul>
+    {% for question in form_questions %}
+
+    <a href="{% url 'quiz:answer_form_question' form.id question.id%}"
+      ><h4>{{ forloop.counter }}. {{ question.display_text }}</h4></a
+    >
+    <br />
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

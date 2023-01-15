@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FunForms - {{ form_title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="{% static 'style.css'%}" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="animation-area">
+      <div class="fluid-container">
+        <ul class="box-area">
+          <div class="quiz">
+            <br /><br /><br /><br />
+            <div id="circle-container"></div>
+            <form action="">
+              <fieldset class="q q1">
+                <div class="content">
+                  <legend>{{ question.display_text }}</legend>
+                  {% for option in question.options.all %}
+                  <input
+                    type="radio"
+                    name="q1"
+                    id="{{ option.value }}"
+                    class="btnQ"
+                    value="{{ option.value }}"
+                  />
+                  <label for="turkey" class="btnQ"
+                    ><span>{{ option.display_text }}</span></label
+                  >
+                  {% endfor %}
+                </div>
+                <div class="button-space"><button class="btn btn-primary form-control" type="submit">Submit</button></div>
+              </fieldset>
+            </form>
+          </div>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/0.9.0/progressbar.min.js"></script>
+    <script src="{% static 'script.js'%}"></script>
+  </body>
+</html>
