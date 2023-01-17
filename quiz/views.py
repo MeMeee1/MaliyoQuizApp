@@ -37,7 +37,7 @@ class FormView(View):
 
 
 def bootstrap4_index(request):
-    return render(request, "index.html", {})
+    return render(request, "home.html", {})
 
 
 # Create your views here.

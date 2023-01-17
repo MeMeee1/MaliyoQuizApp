@@ -15,7 +15,7 @@
     />
 
     <link rel="stylesheet" href="{% static 'style.css'%}" rel="stylesheet" />
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
   </head>
@@ -23,13 +23,9 @@
     <div class="animation-area">
       <div class="fluid-container">
         <ul class="box-area">
+          
           <div class="content q text-center">{% block content %}{% endblock content %}</div>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          
         </ul>
       </div>
     </div>
