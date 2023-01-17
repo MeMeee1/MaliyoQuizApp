@@ -9,4 +9,4 @@ python manage.py ensure_adminuser --username=admin \
     --email=admin@example.com \
     --password=$DJANGO_SUPERUSER_PASSWORD
 
-uvicorn quizapp.asgi:application --host 0.0.0.0
+gunicorn quizapp.asgi:application -k uvicorn.workers.UvicornWorker -w 1 --bind 0.0.0.0:80 --bind 0.0.0.0:443

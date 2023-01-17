@@ -4,12 +4,11 @@ from quiz import views
 app_name = "quiz"
 
 urlpatterns = [
-    path('home/', views.bootstrap4_index, name='homw'),
+    path("home/", views.bootstrap4_index, name="homw"),
     path(
         "<int:form_id>/question/<int:question_id>/",
         views.AnswerQuestionView.as_view(),
         name="answer_form_question",
     ),
-
     path("<int:form_id>/", views.FormView.as_view(), name="form_main"),
 ]

@@ -107,7 +107,7 @@ class Form(models.Model):
         ordering = ["-last_updated_at", "-created_at"]
 
     def get_absolute_url(self):
-        return reverse_lazy("quiz:form_main", kwargs={"form_id":self.pk})
+        return reverse_lazy("quiz:form_main", kwargs={"form_id": self.pk})
 
     def __str__(self) -> str:
         return f"{self.title}"
@@ -120,8 +120,15 @@ class Form(models.Model):
         )
 
     def get_next_questions(self, question: Question) -> QuerySet[Question]:
-        q = Question.objects.filter(pk=question.pk).annotate(order=F("form_question__order")).first()
-        return Question.objects.filter(form_question__form=self).filter(form_question__order__gt=q.order)
+        q = (
+            Question.objects.filter(pk=question.pk)
+            .annotate(order=F("form_question__order"))
+            .first()
+        )
+        return Question.objects.filter(form_question__form=self).filter(
+            form_question__order__gt=q.order
+        )
+
 
 class FormQuestion(models.Model):
     question = models.ForeignKey(
