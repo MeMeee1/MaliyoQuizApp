@@ -20,12 +20,9 @@
 }
 
 #rest-of-page {
-  border: solid 1px rgb(215, 84, 215);
-  background-color: rgb(215, 84, 215);
+  border: solid 1px gray;
 }
 
 .btn-option{
-    width: 8em;
-    position: relative;
+    width: 20em;
 }
-
