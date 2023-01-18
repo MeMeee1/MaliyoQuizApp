@@ -1,0 +1,23 @@
+#outerContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+#containerA {
+  border: solid 1px gray;
+}
+
+#containerB {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#rest-of-page {
+  border: solid 1px gray;
+}
+
+.btn-option{
+    width: 10em;
+}

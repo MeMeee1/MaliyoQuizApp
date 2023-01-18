@@ -5,6 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.db import models
 from django.db.models import QuerySet, F
 from django.forms import ValidationError
+from django.db.models.constraints import UniqueConstraint
 
 
 class QuestionTypes(models.TextChoices):
@@ -139,6 +140,10 @@ class FormQuestion(models.Model):
     )
     order = models.PositiveIntegerField()
 
+    class Meta:
+        # TODO: Ensure question can only be added to form once
+        ...
+
 
 class UserResponse(models.Model):
     form = models.ForeignKey(
@@ -172,7 +177,7 @@ class UserResponse(models.Model):
         return f"{self.user_ip} - {self.question}"
 
     def save(self, *args, **kwargs) -> None:
-        self._validate_user_response()
+        # self._validate_user_response()
         return super().save(*args, **kwargs)
 
     def _validate_user_response(self):
