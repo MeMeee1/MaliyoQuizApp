@@ -36,7 +36,7 @@ class AnswerQuestionView(View):
 
         if user_response_form.is_valid():
             instance = user_response_form.save()
-            print(f"{next_questions=}")
+            
             next_question = next_questions.first()
             if next_question:
                 print("Redirecting")
