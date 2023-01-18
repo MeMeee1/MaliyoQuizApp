@@ -24,10 +24,10 @@
         {% for option in question.options.all %}
         <div class="col-4 form-group">
           <button
-            type="button"
+            type="radio"
             name="{{ option.value }}"
             id="{{ option.pk }}"
-            class="btn btn-outline-primary btn-lg btn-option"
+            class="btn btn-outline-primary btn-lg btn-option "
             value="{{ option.value }}"
           >
             {{ option.display_text }}

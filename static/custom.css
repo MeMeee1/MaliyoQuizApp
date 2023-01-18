@@ -25,5 +25,6 @@
 }
 
 .btn-option{
-    width: 10em;
+    width: 8em;
+    position: relative;
 }
