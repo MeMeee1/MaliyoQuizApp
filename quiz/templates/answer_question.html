@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %}{{ form.title }}{% endblock title %}
 {% block content %}
 <div class="col-12">
-  <div class="card w-80">
+  <div class="card w-100">
     <div class="card-body text-center">
       <h5 class="card-title">{{ question.display_text }}</h5>
       <small id="question-id" hidden>{{ question.pk }}</small>
@@ -22,12 +22,12 @@
       </ul>
       <div class="row align-items-center">
         {% for option in question.options.all %}
-        <div class="col-sm-3  form-group">
+        <div class="col-sm  form-group">
           <button
-            type="radio"
+            type="button"
             name="{{ option.value }}"
             id="{{ option.pk }}"
-            class="btn btn-outline-primary btn-lg btn-option btn-block"
+            class="btn btn-outline-primary btn-lg btn-option btn-block "
             value="{{ option.value }}"
           >
             {{ option.display_text }}
