@@ -1,7 +1,9 @@
 {% extends "base.html" %} {% block title %}{{ form.title }}{% endblock title %}
 {% block content %}
-<div class="col-12">
+<div class="col-11">
+  
   <div class="card w-100">
+    <div id="countdown" class="text-right"></div>
     <div class="card-body text-center">
       <h5 class="card-title">{{ question.display_text }}</h5>
       <small id="question-id" hidden>{{ question.pk }}</small>
@@ -22,22 +24,28 @@
       </ul>
       <div class="row align-items-center">
         {% for option in question.options.all %}
-        <div class="col-sm  form-group">
+        <div class="col-sm-3 col-sm-6 form-group">
           <button
             type="button"
             name="{{ option.value }}"
             id="{{ option.pk }}"
-            class="btn btn-outline-primary btn-lg btn-option btn-block "
+            class="btn btn-outline-primary btn-lg btn-option btn-block"
             value="{{ option.value }}"
           >
             {{ option.display_text }}
           </button>
         </div>
-        {% endfor %}
-        {% csrf_token %}
+        {% endfor %} {% csrf_token %}
       </div>
-      <hr>
-      <button id="submit-btn" class="btn btn-success form-control" disabled onclick="submitResponse()">Submit</button>
+      <hr />
+      <button
+        id="submit-btn"
+        class="btn btn-success float-right"
+        disabled
+        onclick="submitResponse()"
+      >
+        Next
+      </button>
     </div>
   </div>
 </div>

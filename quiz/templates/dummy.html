@@ -1,0 +1,11 @@
+<ul class="list-group list-group-flush">
+    {% for question in form_questions %}
+    <li class="list-group-item">
+      <a
+        href="{% url 'quiz:answer_form_question' form.id question.id %}"
+        class="card-link"
+        >{{ forloop.counter }}. {{ question.display_text }}</a
+      >
+    </li>
+    {% endfor %}
+  </ul>

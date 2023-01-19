@@ -75,8 +75,23 @@ class FormThanksView(TemplateView):
     template_name = "form_thanks.html"
 
 
+class ShowFirstQuestionView(View):
+    def get(self, request: HttpRequest, form_id: int, question_id: int):
+        question: Question = get_object_or_404(Question, form=form_id, pk=question_id)
+        form = Form.objects.filter(pk=form_id).first()
+        
+        return render(
+            request,
+            "answer_question.html",
+            context={
+                "form": form,
+                "question": question,
+                
+            },
+        )
+
 def bootstrap4_index(request):
-    return render(request, "home.html", {})
+    return render(request, "index.html", {})
 
 
 # Create your views here.

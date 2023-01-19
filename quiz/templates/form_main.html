@@ -1,22 +1,28 @@
 {% extends "base.html" %} {% block title %}{{ form.title }}{% endblock title %}
 {% block content %}
-<div class="col-12 ">
-  <div class="card w-80">
+
+<div class="col-sm-5">
+  <div class="card w-100">
     <div class="card-body text-center">
       <h5 class="card-title">{{ form.title }}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{ form.description }}</h6>
       <br />
       <p class="card-text">Questions for <b>{{ form.title }}</b>.</p>
-
       <ul class="list-group list-group-flush">
         {% for question in form_questions %}
         <li class="list-group-item">
+          {% if forloop.first %}
           <a
             href="{% url 'quiz:answer_form_question' form.id question.id %}"
             class="card-link"
-            >{{ forloop.counter }}. {{ question.display_text }}</a
           >
+            <button id="submit-btn" class="btn btn-success float-right">
+              Start Quiz
+            </button>
+          </a>
+          {% endif %}
         </li>
+
         {% endfor %}
       </ul>
     </div>

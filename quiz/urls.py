@@ -6,6 +6,11 @@ app_name = "quiz"
 urlpatterns = [
     path("home/", views.bootstrap4_index, name="home"),
     path(
+        "<int:form_id>/question/",
+        views.ShowFirstQuestionView.as_view(),
+        name="show_first_question",
+    ),
+    path(
         "<int:form_id>/question/<int:question_id>/",
         views.AnswerQuestionView.as_view(),
         name="answer_form_question",

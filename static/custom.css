@@ -5,11 +5,11 @@
 }
 
 #containerA {
-  border: solid 1px gray;
+  border: solid 1px black;
 }
 
 #containerB {
-  align-items: center;
+  align-items: right;
   justify-content: center;
   position: absolute;
   top: 0;
@@ -19,10 +19,4 @@
   margin-right: auto;
 }
 
-#rest-of-page {
-  border: solid 1px gray;
-}
 
-/* .btn-option{
-    
-} */
