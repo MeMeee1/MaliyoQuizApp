@@ -14,7 +14,7 @@ var downloadTimer = setInterval(function () {
   if (timeleft <= 0) {
     clearInterval(downloadTimer);
     
-    window.location.replace("/form_thanks.html/");
+    window.location.replace("https://maliyoquizapp.onrender.com/out-of-time/");
     localStorage.removeItem('seconds');
     return;
   } 
@@ -24,5 +24,5 @@ var downloadTimer = setInterval(function () {
     document.getElementById("countdown").innerHTML ="0:" + (timeleft == 0 ? "0" : "") + String(timeleft);
   }
   timeleft -= 1;
-  //localStorage.setItem('seconds', timeleft);
+  localStorage.setItem('seconds', timeleft);
 }, 1000);

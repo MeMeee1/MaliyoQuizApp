@@ -74,6 +74,8 @@ class FormView(View):
 class FormThanksView(TemplateView):
     template_name = "form_thanks.html"
 
+class FormNoTimeView(TemplateView):
+    template_name = "form_time_over.html"
 
 class ShowFirstQuestionView(View):
     def get(self, request: HttpRequest, form_id: int, question_id: int):
@@ -91,7 +93,7 @@ class ShowFirstQuestionView(View):
         )
 
 def bootstrap4_index(request):
-    return render(request, "index.html", {})
+    return render(request, "form_thanks.html", {})
 
 
 # Create your views here.
