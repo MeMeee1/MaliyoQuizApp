@@ -26,3 +26,4 @@ var downloadTimer = setInterval(function () {
   timeleft -= 1;
   localStorage.setItem('seconds', timeleft);
 }, 1000);
+ 
