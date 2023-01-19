@@ -1,4 +1,4 @@
-var timeleft = 10;
+var timeleft = 59;
 var downloadTimer = setInterval(function () {
   const storedSecondsLeft = localStorage.getItem('seconds');
   // check if you have localstorage stored
