@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-@fkncjjc4r4-(dpkb+k&qmdj2zz1(607p+s$iaf0tucl7@%+&o"
+SECRET_KEY = " "
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
@@ -76,7 +76,8 @@ WSGI_APPLICATION = "quizapp.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://maliyotest:hg0FXNGL3x2dsgUnyz51d19QDjVeE6ui@dpg-cf5hbsen6mphe135j070-a/dbpostmaliyo'),
+    'default': dj_database_url.config( default= "postgres://maliyotest:hg0FXNGL3x2dsgUnyz51d19QDjVeE6ui@dpg-cf5hbsen6mphe135j070-a/dbpostmaliyo"),
+    
     # {
     #     # 'ENGINE': 'django.db.backends.postgresql',
         
