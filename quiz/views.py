@@ -2,7 +2,7 @@ from django.urls import reverse, reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, ListView, CreateView, DetailView, TemplateView
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from quiz.models import Question, Form, UserResponse
+from quiz.models import Question, Form, UserResponse, Marks_Of_User
 from quiz.forms import UserResponseCreateForm
 from quiz.utils import get_client_ip
 

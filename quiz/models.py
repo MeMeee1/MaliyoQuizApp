@@ -17,6 +17,7 @@ class QuestionTypes(models.TextChoices):
 
 
 class Question(models.Model):
+    correct = models.BooleanField(default=False)
     display_text = models.CharField(
         max_length=500,
         help_text="Actual question text that gets displayed to the user.",
@@ -65,6 +66,7 @@ class Question(models.Model):
 
 
 class QuestionOption(models.Model):
+    
     display_text = models.CharField(
         max_length=250, help_text="Actual option text that gets displayed to the user"
     )
@@ -241,3 +243,8 @@ class UserResponse(models.Model):
         if no_previous_responses >= self.question.form.max_attempts:
             return False
         return True
+class Marks_Of_User(models.Model):
+    question = models.ForeignKey("quiz.Question", on_delete=models.CASCADE)
+    score = models.FloatField()
+    def __str__(self):
+        return str(self.question)

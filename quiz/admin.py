@@ -25,3 +25,7 @@ class QuestionOptionAdmin(admin.ModelAdmin):
 @admin.register(models.UserResponse)
 class UserResponseAdmin(admin.ModelAdmin):
     ...
+
+@admin.register(models.Marks_Of_User)
+class Marks_Of_UserAdmin(admin.ModelAdmin):
+    ...

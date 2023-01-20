@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-@fkncjjc4r4-(dpkb+k&qmdj2zz1(607p+s$iaf0tucl7@%+&o"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,12 +76,17 @@ WSGI_APPLICATION = "quizapp.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.parse('postgres://maliyotest:hg0FXNGL3x2dsgUnyz51d19QDjVeE6ui@dpg-cf5hbsen6mphe135j070-a/dbpostmaliyo'),
+    # {
+    #     # 'ENGINE': 'django.db.backends.postgresql',
+        
+    #     # 'NAME': 'maliyodb',
+    #     # 'USER': 'maliyotest',
+    #     # 'PASSWORD': 'hg0FXNGL3x2dsgUnyz51d19QDjVeE6ui',
+    #     # 'HOST': 'dpg-cf5hbsen6mphe135j070-a',
+    #     # 'PORT': '5432',
+    # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
