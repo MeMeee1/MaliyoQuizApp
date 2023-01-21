@@ -86,11 +86,11 @@ DATABASES = {
     }
 }
 DATABASES['default'] = dj_database_url.config(
-    default=env('DATABASE_URL'),
+    default=env("DATABASE_URL"),
     
     conn_max_age=600,
     conn_health_checks=True,
-    test_options={'NAME': env('DB_NAME'), 'USER': env('DB_USER'),'PASSWORD':env('DB_PASSWORD'),}
+    test_options={'NAME': env("DB_NAME"), 'USER': env("DB_USER"),'PASSWORD':env("DB_PASSWORD"),}
 ) 
  
 
