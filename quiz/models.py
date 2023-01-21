@@ -17,7 +17,7 @@ class QuestionTypes(models.TextChoices):
 
 
 class Question(models.Model):
-    correct = models.BooleanField(default=False)
+    
     display_text = models.CharField(
         max_length=500,
         help_text="Actual question text that gets displayed to the user.",

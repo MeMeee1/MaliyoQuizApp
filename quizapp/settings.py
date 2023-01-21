@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env
 import dj_database_url
+import os # new
+env = Env() # new
+env.read_env() # new
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = " "
+SECRET_KEY = 'django-insecure-tl2cp#h2^5kdci5t!deq(g7k$cn=f)km9m_kp6#$+kpjr(2ip@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,18 +80,21 @@ WSGI_APPLICATION = "quizapp.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config( default= "postgres://maliyotest:hg0FXNGL3x2dsgUnyz51d19QDjVeE6ui@dpg-cf5hbsen6mphe135j070-a/dbpostmaliyo"),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+DATABASES['default'] = dj_database_url.config(
+    default='postgres://test_wnk1_user:5mo7yXyijtQLR2akvboyhxYKjS7uX8UA@dpg-cf602dsgqg47vk6ter2g-a.oregon-postgres.render.com/test_wnk1',
     
-    # {
-    #     # 'ENGINE': 'django.db.backends.postgresql',
-        
-    #     # 'NAME': 'maliyodb',
-    #     # 'USER': 'maliyotest',
-    #     # 'PASSWORD': 'hg0FXNGL3x2dsgUnyz51d19QDjVeE6ui',
-    #     # 'HOST': 'dpg-cf5hbsen6mphe135j070-a',
-    #     # 'PORT': '5432',
-    # }
-} 
+    conn_max_age=600,
+    conn_health_checks=True,
+    test_options={'NAME': 'test', 'USER':'test_wnk1_user','PASSWORD':'5mo7yXyijtQLR2akvboyhxYKjS7uX8UA'}
+)
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -126,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
