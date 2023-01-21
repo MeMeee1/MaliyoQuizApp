@@ -86,7 +86,7 @@ DATABASES = {
     } 
 }
 DATABASES['default'] = dj_database_url.config(
-    default=os.environ.get("DATABASE_URL"),
+    default='postgres://test_wnk1_user:5mo7yXyijtQLR2akvboyhxYKjS7uX8UA@dpg-cf602dsgqg47vk6ter2g-a.oregon-postgres.render.com/test_wnk1',
     
     conn_max_age=600,
     conn_health_checks=True,
