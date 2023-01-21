@@ -92,7 +92,7 @@ DATABASES['default'] = dj_database_url.config(
     conn_health_checks=True,
     test_options={'NAME': 'test', 'USER':'test_wnk1_user','PASSWORD':'5mo7yXyijtQLR2akvboyhxYKjS7uX8UA'}
 )
-
+ 
 
 
 
