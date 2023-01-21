@@ -86,12 +86,12 @@ DATABASES = {
     }
 }
 DATABASES['default'] = dj_database_url.config(
-    default='postgres://test_wnk1_user:5mo7yXyijtQLR2akvboyhxYKjS7uX8UA@dpg-cf602dsgqg47vk6ter2g-a.oregon-postgres.render.com/test_wnk1',
+    default=env('DATABASE_URL'),
     
     conn_max_age=600,
     conn_health_checks=True,
-    test_options={'NAME': 'test', 'USER':'test_wnk1_user','PASSWORD':'5mo7yXyijtQLR2akvboyhxYKjS7uX8UA'}
-)
+    test_options={'NAME': env('DB_NAME'), 'USER': env('DB_USER'),'PASSWORD':env('DB_PASSWORD'),}
+) 
  
 
 
