@@ -4,7 +4,7 @@ from quiz import views
 app_name = "quiz"
 
 urlpatterns = [
-    path('', views.home,name='home'),
+   
     path(
         
         "<int:form_id>/question/<int:question_id>/",
