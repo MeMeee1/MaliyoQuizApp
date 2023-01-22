@@ -35,7 +35,9 @@ class Question(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     last_updated_at = models.DateTimeField(auto_now=True)
-
+    correct_option = models.ForeignKey(
+        "quiz.QuestionOption", related_name="correct_option", on_delete=models.CASCADE, default = 1
+    )
     class Meta:
         verbose_name = "question"
         verbose_name_plural = "questions"
