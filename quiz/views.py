@@ -96,6 +96,7 @@ class ShowFirstQuestionView(View):
 def bootstrap4_index(request):
     return render(request, "form_thanks.html", {})
 
+class 
 def home(request):
     score=50
     total =90
@@ -106,7 +107,7 @@ def home(request):
         wrong=0
         correct=0
         total=0
-        for q in questions:
+        for q in questions: 
             total+=1
             print(request.POST.get(q.question))
             print(q.ans)
