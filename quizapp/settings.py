@@ -83,15 +83,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    } 
 }
 DATABASES['default'] = dj_database_url.config(
     default='postgres://test_wnk1_user:5mo7yXyijtQLR2akvboyhxYKjS7uX8UA@dpg-cf602dsgqg47vk6ter2g-a.oregon-postgres.render.com/test_wnk1',
     
     conn_max_age=600,
     conn_health_checks=True,
-    test_options={'NAME': 'test', 'USER':'test_wnk1_user','PASSWORD':'5mo7yXyijtQLR2akvboyhxYKjS7uX8UA'}
-)
+    test_options={'NAME': os.environ.get("DB_NAME"), 'USER': os.environ.get("DB_USER"),'PASSWORD':os.environ.get("DB_PASSWORD"),}
+) 
  
 
 

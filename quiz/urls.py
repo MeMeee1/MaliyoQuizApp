@@ -4,8 +4,9 @@ from quiz import views
 app_name = "quiz"
 
 urlpatterns = [
-    
+   
     path(
+        
         "<int:form_id>/question/<int:question_id>/",
         views.AnswerQuestionView.as_view(),
         name="answer_form_question",

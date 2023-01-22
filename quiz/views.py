@@ -27,6 +27,7 @@ class AnswerQuestionView(View):
         question: Question = get_object_or_404(Question, form=form_id, pk=question_id)
         form = Form.objects.filter(pk=form_id).first()
         next_questions = form.get_next_questions(question)
+        print(next_question)
 
         data = request.POST.dict()
         print(request.POST, data)
@@ -94,6 +95,7 @@ class ShowFirstQuestionView(View):
 
 def bootstrap4_index(request):
     return render(request, "form_thanks.html", {})
+
 
 
 # Create your views here.
