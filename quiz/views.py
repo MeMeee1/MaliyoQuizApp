@@ -95,13 +95,25 @@ class ResultView(View):
     def get(self, request: HttpRequest, form_id: int):
         form = get_object_or_404(Form, id=form_id)
         questions = form.questions.all()
-        score = 0
-        for question in questions:
-            correct_option = question.get_correct_option()
-            user_answer = request.GET.get(str(question.id))
-            if user_answer == correct_option.value:
-                score += question.score_amount
-        return render(request, 'form_results.html', {'score': score})
+        data = request.POST.dict()
+       
+        data["user_ip"] = get_client_ip(request)
+        data["selected_options"] = request.POST.getlist("selected_options", [])
+        user_response_form = UserResponseCreateForm(data)
+
+        if user_response_form.is_valid():
+            instance = user_response_form.save()
+            
+            score = 0
+            for question in questions:
+                correct_option = question.get_correct_option()
+                user_answer = user_response_form.data.get(str(question.id))
+                if user_answer == correct_option.value:
+                    score += question.score_amount
+            return render(request, 'form_results.html', {'score': score})
+        else:
+            return render(request, 'form_results.html')
+        
 
 def bootstrap4_index(request):
     return render(request, "form_thanks.html", {})
