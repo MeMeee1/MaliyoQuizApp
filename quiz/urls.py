@@ -14,5 +14,5 @@ urlpatterns = [
     path("<int:form_id>/thanks/", views.FormThanksView.as_view(), name="form_thanks"),
     path("out-of-time/", views.FormNoTimeView.as_view(), name="form_thanks"),
     path("<int:form_id>/", views.FormView.as_view(), name="form_main"),
-    path('form/<int:form_id>/result/', views.ResultView.as_view(), name='result')
+    path('form/<int:form_id>/result/', views.GradeQuizView.as_view(), name='result')
 ]
