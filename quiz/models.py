@@ -243,8 +243,3 @@ class UserResponse(models.Model):
         if no_previous_responses >= self.question.form.max_attempts:
             return False
         return True
-class Marks_Of_User(models.Model):
-    question = models.ForeignKey("quiz.Question", on_delete=models.CASCADE)
-    score = models.FloatField()
-    def __str__(self):
-        return str(self.question)

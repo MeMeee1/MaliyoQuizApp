@@ -2,7 +2,7 @@ from django.urls import reverse, reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View, ListView, CreateView, DetailView, TemplateView
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from quiz.models import Question, Form, UserResponse, Marks_Of_User
+from quiz.models import Question, Form, UserResponse
 from quiz.forms import UserResponseCreateForm
 from quiz.utils import get_client_ip
 
@@ -12,7 +12,6 @@ class AnswerQuestionView(View):
         question: Question = get_object_or_404(Question, form=form_id, pk=question_id)
         form = Form.objects.filter(pk=form_id).first()
         next_questions = form.get_next_questions(question)
-        print(next_questions)
         return render(
             request,
             "answer_question.html",
@@ -27,10 +26,10 @@ class AnswerQuestionView(View):
         question: Question = get_object_or_404(Question, form=form_id, pk=question_id)
         form = Form.objects.filter(pk=form_id).first()
         next_questions = form.get_next_questions(question)
-        print(next_question)
+        
 
         data = request.POST.dict()
-        print(request.POST, data)
+       
         data["user_ip"] = get_client_ip(request)
         data["selected_options"] = request.POST.getlist("selected_options", [])
         user_response_form = UserResponseCreateForm(data)
@@ -40,7 +39,7 @@ class AnswerQuestionView(View):
             
             next_question = next_questions.first()
             if next_question:
-                print("Redirecting")
+                
                 return redirect(
                     "quiz:answer_form_question",
                     **{"form_id": form.pk, "question_id": next_question.pk},
@@ -48,7 +47,7 @@ class AnswerQuestionView(View):
             else:
                 return redirect("quiz:form_thanks", **{"form_id": form.pk})
         else:
-            print(user_response_form.errors)
+           
             return render(
                 request,
                 "answer_question.html",
