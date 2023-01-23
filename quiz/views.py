@@ -98,10 +98,9 @@ class ResultView(View):
         score = 0
         for question in questions:
             correct_option = question.get_correct_option()
-            user_answer = request.POST.get(question.id)
-            
+            user_answer = request.POST.get(str(question.id))
             if user_answer == correct_option.value:
-                score += form.get_total_score()
+                score += question.score_amount
         return render(request, 'form_results.html', {'score': score})
 def bootstrap4_index(request):
     return render(request, "form_thanks.html", {})
