@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "quiz",
+    "newquiz",
 ]
 
 MIDDLEWARE = [
@@ -85,13 +86,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     } 
 }
-DATABASES['default'] = dj_database_url.config(
-    default='postgres://test_wnk1_user:5mo7yXyijtQLR2akvboyhxYKjS7uX8UA@dpg-cf602dsgqg47vk6ter2g-a.oregon-postgres.render.com/test_wnk1',
+# DATABASES['default'] = dj_database_url.config(
+#     default='postgres://test_wnk1_user:5mo7yXyijtQLR2akvboyhxYKjS7uX8UA@dpg-cf602dsgqg47vk6ter2g-a.oregon-postgres.render.com/test_wnk1',
     
-    conn_max_age=600,
-    conn_health_checks=True,
-    test_options={'NAME': os.environ.get("DB_NAME"), 'USER': os.environ.get("DB_USER"),'PASSWORD':os.environ.get("DB_PASSWORD"),}
-) 
+#     conn_max_age=600,
+#     conn_health_checks=True,
+#     test_options={'NAME': os.environ.get("DB_NAME"), 'USER': os.environ.get("DB_USER"),'PASSWORD':os.environ.get("DB_PASSWORD"),}
+# ) 
  
 
 
@@ -133,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] 
+STATICFILES_DIRS = [BASE_DIR / 'static', BASE_DIR / 'newquiz'/'static',] 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 

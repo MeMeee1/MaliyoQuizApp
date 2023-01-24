@@ -102,7 +102,7 @@ class ResultView(View):
             print(correct_option)
             
             if user_answer == correct_option:
-                score += form.get_total_score()
+                score += question.score_amount
         return render(request, 'form_results.html', {'score': score})
 def bootstrap4_index(request):
     return render(request, "form_thanks.html", {})

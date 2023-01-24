@@ -134,11 +134,11 @@ class Form(models.Model):
         return Question.objects.filter(form_question__form=self).filter(
             form_question__order__gt=q.order
         )
-    def get_total_score(self):
-        total_score = 0
-        for question in self.questions.all():
-            total_score += question.score_amount
-        return total_score
+    # def get_total_score(self):
+    #     total_score = 0
+    #     for question in self.questions.all():
+    #         total_score += question.score_amount
+    #     return total_score
 
 
 class FormQuestion(models.Model):
