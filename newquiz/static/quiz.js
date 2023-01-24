@@ -56,15 +56,18 @@ $.ajax({
       for (const [question, answers] of Object.entries(el)) {
         quizBox.innerHTML += `
                     <hr>
-                    <div class="mb-2">
+                    <div class="mb-2 id="questions">
                         <b>${question}</b>
                     </div>
                 `;
+                quizBox.style.fontSize = "25px";
         answers.forEach((answer) => {
           quizBox.innerHTML += `
-                        <div class="form-check form-check-inline">
+          
+        
+                        <div class="col-12 form-check form-check-inline" >
                             <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
-                            <label for="${question}">${answer}</label>
+                             <label for="${question} id="radio-buttons"">${answer}</label>
                         </div>
                     `;
         });
