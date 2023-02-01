@@ -18,7 +18,7 @@ const selectedClass = "btn-primary",
 
 let selectedOption = undefined,
   questionID,
-  formID;
+  formID; 
 
 $("document").ready(function () {
   questionID = document.getElementById("question-id").innerText;
@@ -26,6 +26,9 @@ $("document").ready(function () {
   optionButtons = document.getElementsByClassName("btn-option");
   Array.from(optionButtons).forEach((element) => {
     element.addEventListener("click", (e) => {
+      if (element.getAttribute("data-correct") === "True") {
+        alert("CORRECT")
+      }
       updateSelectedOption(e.target);
     });
   });
@@ -35,6 +38,7 @@ function updateSelectedOption(element) {
   if (typeof selectedOption !== "undefined") {
     selectedOption.classList.remove(selectedClass);
     selectedOption.classList.add(defaultDeselectedClass);
+    
   }
 
   element.classList.remove(defaultDeselectedClass);

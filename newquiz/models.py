@@ -21,7 +21,7 @@ class Quiz(models.Model):
 
     def get_questions(self):
         questions = list(self.question_set.all())
-        random.shuffle(questions)
+        
         return questions[:self.number_of_questions]
 
     class Meta:
@@ -30,6 +30,7 @@ class Quiz(models.Model):
 class Question(models.Model):
     text = models.CharField(max_length=200)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

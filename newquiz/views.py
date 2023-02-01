@@ -1,16 +1,27 @@
 from django.shortcuts import render
 from .models import Quiz, Question, Answer, Result
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
 
 
 class QuizListView(ListView):
     model = Quiz 
     template_name = 'main.html'
 
-def quiz_view(request, pk):
+def quiz_first_page (request,pk):
     quiz = Quiz.objects.get(pk=pk)
-    return render(request, 'quiz.html', {'obj': quiz})
+    questions = quiz.get_questions()
+    return render(request, 'newquiz.html',{'quiz':quiz, 'questions':questions})
+
+def quiz_view(request, pk):
+   quiz = Quiz.objects.get(pk=pk)
+   questions = quiz.get_questions()
+   paginator = Paginator(questions, 1) # Show 1 question per page
+   page_number = request.GET.get('page')
+   page_obj = paginator.get_page(page_number)
+   return render(request, 'quiz.html', {'obj':quiz, 'page_obj': page_obj})
 
 def quiz_data_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
@@ -24,7 +35,9 @@ def quiz_data_view(request, pk):
         'data': questions,
         'time': quiz.time,
     })
-
+def form_thanks_view(request,pk):
+    quiz = Quiz.objects.get(pk=pk)
+    return render(request, 'formthanks.html',{'quiz':quiz})
 def save_quiz_view(request, pk):
     if request.is_ajax():
         questions = []
@@ -68,7 +81,15 @@ def save_quiz_view(request, pk):
         score_ = score * multiplier
         Result.objects.create(quiz=quiz, user=user, score=score_)
 
+        results.append({'score': score_})
+
         if score_ >= quiz.required_score_to_pass:
-            return JsonResponse({'passed': True, 'score': score_, 'results': results})
+            return JsonResponse({'passed': True, 'results': results})
         else:
-            return JsonResponse({'passed': False, 'score': score_, 'results': results})
+            return JsonResponse({'passed': False, 'results': results})
+    else:
+        return HttpResponse("This view only accepts AJAX requests.")
+
+
+
+

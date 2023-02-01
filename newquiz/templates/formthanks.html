@@ -1,0 +1,26 @@
+{% extends "top.html" %} {% load static %}{% block title %}Thank You!{% endblock title %}
+{% block scripts %}
+<script src="{% static 'thanks.js' %}" defer></script> 
+    
+{% endblock scripts %}
+{% block content %}
+<div class="card-body text-center">
+      <h5 class="card-title">Thank You for Filing the form 🚀  🚀</h5>
+      
+      <h5 class="card-title" id="scoreCard" score-pass="{{quiz.required_score_to_pass}}">Score: {{score}}</h6>
+      <div id="progressBar">
+        <div id="filled"></div>
+   </div>
+   <p class="card-text">Your response has been recorded</p>
+   <div id="imageSpace">
+
+   </div>
+  
+      
+     
+      <a href="{% url 'newquiz:first-view' quiz.pk%}"><button id="home" class="btn modal-button btn btn-success">Home</button></a>
+      
+
+ 
+</div>
+{% endblock content %}
