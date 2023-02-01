@@ -93,7 +93,7 @@ DATABASES['default'] = dj_database_url.config(
      conn_health_checks=True,
      test_options={'NAME': os.environ.get("DB_NAME"), 'USER': os.environ.get("DB_USER"),'PASSWORD':os.environ.get("DB_PASSWORD"),}
   ) 
- 
+  
 
 
 
