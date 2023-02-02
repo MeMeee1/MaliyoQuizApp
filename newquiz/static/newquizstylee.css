@@ -2,7 +2,6 @@
   padding: 0px;
   margin: 0px;
 }
-
 #timer-box {
   font-weight: bolder;
   font-size: 80px;
@@ -38,15 +37,24 @@ body {
   background: linear-gradient(to left, #8942a8, #ba382f);
   width: auto;
   height: auto;
-  /* position: absolute; */
-  top: 50px;
-  left: 0;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, 30%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+#outerContainer
+{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#outerContainer {
-  margin-top: 50vh;
-  transform: translateY(-50%);
-}
 .btn-outline-primary{
   background-color:rgb(247, 202, 138);
   color: black;
@@ -65,7 +73,7 @@ body {
 }
 
 .box-area li:nth-child(1) {
-  left: 80%;
+  left: 50%;
   width: 80px;
   height: 80px;
   animation-delay: 0s;
@@ -80,14 +88,14 @@ body {
 }
 
 .box-area li:nth-child(3) {
-  left: 70%;
+  left: 50%;
   width: 100px;
   height: 100px;
   animation-delay: 5.5s;
 }
 
 .box-area li:nth-child(4) {
-  left: 42%;
+  left: 50%;
   width: 150px;
   height: 150px;
   animation-delay: 0s;
