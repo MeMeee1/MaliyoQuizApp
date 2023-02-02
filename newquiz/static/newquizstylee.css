@@ -45,7 +45,12 @@ body {
 
 #outerContainer {
   margin-top: 50vh;
-  transform: translateY(-30%);
+  transform: translateY(-50%);
+}
+.btn-outline-primary{
+  background-color:rgb(247, 202, 138);
+  color: black;
+  border: white;
 }
 
 .box-area li {
