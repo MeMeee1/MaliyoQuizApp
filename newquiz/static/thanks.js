@@ -19,8 +19,8 @@ else if(total>49 && total<=59)
   imageDisplay.innerHTML=`<img src="https://media.giphy.com/media/dalJ0CpF7hwmN1nZXe/giphy.gif" alt="this slowpoke moves"  width="100" />`;
 
 }
-else if(total>0 && total<=49)
-{
+else if(total>=0 && total<=49)
+{ 
   imageDisplay.innerHTML=`<img src="https://usagif.com/wp-content/uploads/2022/4hv9xm/crying-emoji-9.gif.webp" alt="this slowpoke moves"  width="100" />`;
 
 }
