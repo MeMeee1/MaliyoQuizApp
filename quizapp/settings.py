@@ -94,7 +94,7 @@ DATABASES['default'] = dj_database_url.config(
       test_options={'NAME': os.environ.get("DB_NAME"), 'USER': os.environ.get("DB_USER"),'PASSWORD':os.environ.get("DB_PASSWORD"),}
 ) 
   
-
+ 
 
 
 # Password validation
