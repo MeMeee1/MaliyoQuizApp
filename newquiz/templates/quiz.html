@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block scripts %}
-    <script src="{% static 'newtimer.js' %}"></script> 
+    
     <script src="{% static 'test.js' %}" defer ></script> 
+    <script src="{% static 'newtimer.js' %}"></script> 
 {% endblock scripts %}
 {% block styles %}
 <style>
@@ -21,54 +22,66 @@
 {% endblock title %}
 
 {% block content %}
-<hr>
-<br>
-<div class="card-body text-center">
-    <form id="quiz-form" class="mt-3 mb-3" pk-id="{{obj.pk}}">
-        {% csrf_token %}
-        <div class="col text-center" id="timer-box">-:--</div>
-        <div id="progress-bar" total-questions="{{obj.number_of_questions}}"><div id="fill"></div></div>
-        {% for question in page_obj %}
-            <h2 class="card-title">{{question.text}}</h2>
-            <p class="card-text">Pick an option:</p>
-            <div class="answers row align-items-center">
-                {% for answer in question.get_answers %}
-                    <div class="answer col-sm-6 col-12 form-group">
-                        <button
-                            type="button"
-                            name="{{ obj.value }}"
-                            data-pk="{{ obj.pk }}"
-                            id="{{ answer.pk }}"
-                            class="btn btn-outline-primary btn-option btn-block"
-                            value="{{ obj.value }}"
-                            data-time="{{obj.time}}"
-                            data-correct="{{ answer.correct }}"
-                        >
-                            {{answer.text}}
-                        </button>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-        <div id="result-message"></div>
-        <hr>
-        <br>
-    </form>
-
-    <div id="result-box"></div>
-    <div class="pagination">
-        <span class="page-links">
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">
-                    <button type="submit" class="btn btn-primary float-right" id="nextBtn">Next</button>
-                </a>
-            {% else %}
-                <a href="{% url 'newquiz:formthanks' obj.pk%}">
-                    <button type="submit" class="btn btn-primary float-right" id="nextBtn">Submit</button>
-                </a>
-            {% endif %}
-        </span>
-    </div>
-    <br>
-    </div>
+<div id="help" pk-id="{{obj.pk}}"></div>
+<div id="loader"></div>
+  
+  <div id="main" class="card col-sm-6 mx-auto container mt-3 text-center mx-auto d-flex align-items-center justify-content-center"  style="visibility: hidden;">
+      
+    <div class="card-body text-center" id="newcard">
+        <form id="quiz-form" class="mt-3 mb-3">
+            {% csrf_token %}
+            
+            <div class="col text-center" id="timer-box"></div>
+            <hr>
+           
+            <h2 id="showQuestion"></h2>
+              
+            <div id="progress-bar" total-questions="{{obj.number_of_questions}}"><div id="fill"></div></div>
+            
+            <br>
+            {% for question in page_obj %}
+                <h2 class="card-title">{{question.text}}</h2>
+                
+                <p class="card-text">Pick an option:</p>
+                <div class="answers row align-items-center">
+                    {% for answer in question.get_answers %}
+                        
+                        <div class="answer col-sm-6 col-12 form-group">
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">
+                                <button
+                                    type="button"
+                                    name="{{ obj.value }}"
+                                    data-pk="{{ obj.pk }}"
+                                    id="{{ answer.pk }}"
+                                    class="btn btn-outline-primary btn-option btn-block"
+                                    value="{{ obj.value }}"
+                                    data-time="{{obj.time}}"
+                                    data-correct="{{ answer.correct }}"
+                                >
+                                    {{answer.text}}
+                                </button></a>
+                                {% else %}
+                                <a href="{% url 'newquiz:formthanks' obj.pk%}">
+                                    <button
+                                    type="button"
+                                    name="{{ obj.value }}"
+                                    data-pk="{{ obj.pk }}"
+                                    id="{{ answer.pk }}"
+                                    class="btn btn-outline-primary btn-option btn-block"
+                                    value="{{ obj.value }}"
+                                    data-time="{{obj.time}}"
+                                    data-correct="{{ answer.correct }}"
+                                >
+                                    {{answer.text}}
+                                </button></a>
+                                {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <div id="result-message"></div>
+            <hr>
+            
+        </form></div></div>
 {% endblock content %}

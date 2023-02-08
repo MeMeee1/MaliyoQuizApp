@@ -1,4 +1,7 @@
-
+*{
+  padding: 0%;
+  margin: 0%;
+}
 
 .animation-area {
   background: linear-gradient(to left, #8942a8, #ba382f);

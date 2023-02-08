@@ -1,3 +1,24 @@
+@media only screen and (max-width: 1024px) {
+  footer {
+    display: none;
+  }
+  .card {
+    transform: translate(0%,0%);
+  }
+  .rest-of-page{
+    height: 80%;
+  }
+  .box-area li {
+    bottom: -100px;
+  }
+  .box-area li:nth-child(3) {
+    display: none;
+  }
+  
+ 
+  
+}
+
 * {
   padding: 0px;
   margin: 0px;
@@ -5,6 +26,9 @@
 #timer-box {
   font-weight: bolder;
   font-size: 80px;
+}
+#outerContainer{
+  transform: translate(0%, 50%);
 }
 #quiz-heading {
   font-weight: bolder;
@@ -18,14 +42,6 @@
   font-weight: bolder;
   font-size: 20px;
 }
-.card-img-top {
-  width: 50%;
-  height: 5%;
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 .not-visible {
   display: none;
 }
@@ -36,24 +52,12 @@
 body {
   background: linear-gradient(to left, #8942a8, #ba382f);
   width: auto;
-  height: auto;
-  
-  top: 50%;
-  left: 50%;
-  transform: translate(0%, 30%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  
+  height: 100vh;  
+  position: relative;
+  margin: 0%;
 }
-#outerContainer
-{
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
+
 
 .btn-outline-primary{
   background-color:rgb(247, 202, 138);
@@ -61,19 +65,34 @@ body {
   border: white;
 }
 
-.box-area li {
+
+
+.card{
+  transform: translate(0%,50%);
+  
+}
+
+footer {
+  background-color: black;
   position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.box-area li {
+  position: fixed;
   display: block;
   list-style: none;
-  width: 25px;
-  height: 25px;
+  width: 100px;
+  height: 100px;
   background: rgba(255, 255, 255, 0.2);
   animation: animate 5s linear infinite;
-  bottom: -150px;
+  bottom: -500px;
 }
 
 .box-area li:nth-child(1) {
-  left: 50%;
+  left: 0%;
   width: 80px;
   height: 80px;
   animation-delay: 0s;
@@ -88,14 +107,14 @@ body {
 }
 
 .box-area li:nth-child(3) {
-  left: 50%;
+  left: 70%;
   width: 100px;
   height: 100px;
   animation-delay: 5.5s;
 }
 
 .box-area li:nth-child(4) {
-  left: 50%;
+  left: 70%;
   width: 150px;
   height: 150px;
   animation-delay: 0s;
@@ -103,23 +122,26 @@ body {
 }
 
 .box-area li:nth-child(5) {
-  width: 50px;
-  height: 50px;
+  left: 40%;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 
 .box-area li:nth-child(6) {
-  left: 15%;
+  left: 10%;
   width: 110px;
   height: 110px;
   animation-delay: 3.5s;
 }
+
 .box-area li:nth-child(7) {
   left:30%;
   width: 100px;
   height: 100px;
   border-radius: 100%;
 }
+
 .box-area li:nth-child(8) {
   left:50%;
   width: 80px;
@@ -142,6 +164,8 @@ body {
   border: transparent 0.7px rgb(175, 139, 167);
   background-color: plum;
   bottom: -200px;
+  
+  visibility: hidden;
 }
 
 
@@ -150,7 +174,7 @@ body {
   height: 20px;
   background-color: lightgray;
   border-radius: 5px;
-  margin: 20px 0;
+  
   position: relative;
 }
 
@@ -177,6 +201,58 @@ body {
   height: 20px;
   background-color: lightgray;
   border-radius: 5px;
-  margin: 20px 0;
+ 
   position: relative;
+}
+
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  background: linear-gradient(to left,#ba382f, #8942a8);
+  border-top: 16px solid #8942a8;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: block;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
 }

@@ -1,7 +1,4 @@
-window.onload = function(){
-const startBtn = document.getElementById("quiz-form");
-const pk = startBtn.getAttribute("pk-id");
-  
+optionButtons = document.getElementsByClassName("btn-option");
 var timeleft = 30;
 var downloadTimer = setInterval(function () {
   const storedSecondsLeft = localStorage.getItem("seconds");
@@ -15,7 +12,10 @@ var downloadTimer = setInterval(function () {
   }
   if (timeleft <= 0) {
     clearInterval(downloadTimer);
-    window.location.replace("/newquiz/" + pk + "/thanks");
+    Array.from(optionButtons).forEach((element) => {
+      var pk = element.getAttribute("data-pk");
+      window.location.replace("/newquiz/" + pk[0] + "/thanks");
+    });
     localStorage.removeItem('seconds');
     return;
     
@@ -29,4 +29,7 @@ var downloadTimer = setInterval(function () {
   timeleft -= 1;
   localStorage.setItem("seconds", timeleft);
 }, 1000);
-}
+window.onload = function() {
+  document.getElementById("main").style.visibility = "visible";
+  document.getElementById("loader").style.display = "none";
+};

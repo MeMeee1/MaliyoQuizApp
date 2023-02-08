@@ -30,5 +30,6 @@ homeBtn = document.getElementById("home");
 homeBtn.addEventListener("click", () => {
   localStorage.removeItem("seconds");
   localStorage.removeItem("totalScore");
-  localStorage.removeItem("currentQuestion")
+  localStorage.removeItem("currentQuestion");
+  localStorage.removeItem("questions");
 });
