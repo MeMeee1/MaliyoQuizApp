@@ -3,9 +3,9 @@
     display: none;
   }
   .card {
-    transform: translate(0%,0%);
+    transform: translate(0%, 0%);
   }
-  .rest-of-page{
+  .rest-of-page {
     height: 80%;
   }
   .box-area li {
@@ -14,9 +14,6 @@
   .box-area li:nth-child(3) {
     display: none;
   }
-  
- 
-  
 }
 
 * {
@@ -27,7 +24,7 @@
   font-weight: bolder;
   font-size: 80px;
 }
-#outerContainer{
+#outerContainer {
   transform: translate(0%, 50%);
 }
 #quiz-heading {
@@ -52,22 +49,16 @@
 body {
   background: linear-gradient(to left, #8942a8, #ba382f);
   width: auto;
-  height: 100vh;  
+  height: 100vh;
   position: relative;
   margin: 0%;
 }
 
-
-
-.btn-outline-primary{
-  background-color:rgb(247, 202, 138);
+.btn-outline-primary {
+  background-color: rgb(247, 202, 138);
   color: black;
   border: white;
 }
-
-
-
-
 
 footer {
   background-color: black;
@@ -133,14 +124,14 @@ footer {
 }
 
 .box-area li:nth-child(7) {
-  left:30%;
+  left: 30%;
   width: 100px;
   height: 100px;
   border-radius: 100%;
 }
 
 .box-area li:nth-child(8) {
-  left:50%;
+  left: 50%;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -161,17 +152,16 @@ footer {
   border: transparent 0.7px rgb(175, 139, 167);
   background-color: plum;
   bottom: -200px;
-  
+
   visibility: hidden;
 }
-
 
 #progressBar {
   width: 100%;
   height: 20px;
   background-color: lightgray;
   border-radius: 5px;
-  
+
   position: relative;
 }
 
@@ -187,7 +177,7 @@ footer {
 #fill {
   width: 0;
   height: 100%;
-  background:linear-gradient(to left, #d9dc23, #ff1e0e);
+  background: linear-gradient(to left, #d9dc23, #ff1e0e);
   border-radius: 5px;
   position: absolute;
   top: 0;
@@ -198,58 +188,104 @@ footer {
   height: 20px;
   background-color: lightgray;
   border-radius: 5px;
- 
+
   position: relative;
 }
-
 
 #loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(231, 213, 213);
+  animation: fold-unfold 3s ease-in-out forwards;
+}
+
+@keyframes fold-unfold {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: rotateX(180deg) rotateY(180deg);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+}
+
+#load {
   position: absolute;
-  left: 50%;
   top: 50%;
-  z-index: 1;
-  width: 120px;
-  height: 120px;
-  margin: -76px 0 0 -76px;
-  border: 16px solid #f3f3f3;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  background: transparent;
+  border: 3px solid #3c3c3c;
   border-radius: 50%;
-  background: linear-gradient(to left,#ba382f, #8942a8);
-  border-top: 16px solid #8942a8;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-  display: block;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Add animation to "page content" */
-.animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
-}
-
-@-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
-}
-
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
-
-#myDiv {
-  display: none;
   text-align: center;
+  line-height: 150px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.ring:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid white;
+  border-right: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: animateC 2s linear infinite;
+}
+span {
+  display: block;
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 50%;
+  width: 50%;
+  height: 4px;
+  background: transparent;
+  transform-origin: left;
+  animation: animate 2s linear infinite;
+}
+span:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  top: -6px;
+  right: -8px;
+  box-shadow: 0 0 20px white;
+}
+@keyframes animateC {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
 }
