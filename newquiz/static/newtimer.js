@@ -1,5 +1,5 @@
 optionButtons = document.getElementsByClassName("btn-option");
-var timeleft = 30;
+var timeleft = 60;
 var downloadTimer = setInterval(function () {
   const storedSecondsLeft = localStorage.getItem("seconds");
   // check if you have localstorage stored
@@ -29,7 +29,12 @@ var downloadTimer = setInterval(function () {
   timeleft -= 1;
   localStorage.setItem("seconds", timeleft);
 }, 1000);
-window.onload = function() {
+
+var loadFunction = function () {
   document.getElementById("main").style.visibility = "visible";
   document.getElementById("loader").style.display = "none";
+};
+
+window.onload = function () {
+  setTimeout(loadFunction, 3000);
 };
