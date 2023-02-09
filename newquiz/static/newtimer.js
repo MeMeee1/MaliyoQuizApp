@@ -36,5 +36,5 @@ var loadFunction = function () {
 };
 
 window.onload = function () {
-  setTimeout(loadFunction, 3000);
+  setTimeout(loadFunction, 1000);
 };
