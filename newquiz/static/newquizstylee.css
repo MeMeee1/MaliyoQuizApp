@@ -2,7 +2,7 @@
   footer {
     display: none;
   }
-  .card {
+  #main {
     transform: translate(0%, 0%);
   }
   .rest-of-page {
