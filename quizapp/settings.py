@@ -87,7 +87,7 @@ DATABASES = {
     } 
 }
 DATABASES['default'] = dj_database_url.config(
-      default='postgres://postgresql_pgmaliyoadmin_user:ewGmfRCsOyhydny0p0KHUofg2T0WHzvR@dpg-ck7k9ofq54js73850vm0-a.oregon-postgres.render.com/postgresql_pgmaliyoadmin',
+      default='postgres://maliyo_quiz_postgres_user:BEIxMasjhfaLKDSjhP0azegSphJAD0CV@dpg-cpkp2lq0si5c73cv34l0-a.oregon-postgres.render.com/maliyo_quiz_postgres',
     
        conn_max_age=600,
        conn_health_checks=True,
